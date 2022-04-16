@@ -11,9 +11,8 @@ try:
 except:
   error("GitHub link not provided.")
 
-parts = link.split("/")
-username, repo = urlscan(parts)
+username, repo = urlscan(link)
 validation = urllib.request.urlopen(f"https://github.com/repos/{username}/{repo}")
 if validation.getcode() !== 200:
   error("Invalid GitHub URL.")
-print(validation.read())
+os.system(f"wget https://github.com/{username}/{repo}/archive/main.zip") 
